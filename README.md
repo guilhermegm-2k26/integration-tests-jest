@@ -4,11 +4,11 @@
 
 ## GitHub Actions
 
-[![Node.js CI](https://github.com/ugioni/integration-tests-jest/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/ugioni/integration-tests-jest/actions/workflows/node.js.yml)
+[![Node.js CI](https://github.com/guilhermegm-2k26/integration-tests-jest/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/guilhermegm-2k26/integration-tests-jest/actions/workflows/node.js.yml)
 
 ## SonarCloud
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ugioni_integration-tests-jest&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ugioni_integration-tests-jest)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=guilhermegm-2k26_integration-tests-jest&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=guilhermegm-2k26_integration-tests-jest)
 
 # Getting Started
 
@@ -28,6 +28,7 @@ Inside of the project folder run:
 After that you should see a `./output` folder with some `HTML` reports.
 
 ### Docs to Api under tests: 
+ - [Contact List](https://documenter.getpostman.com/view/4012288/TzK2bEa8) — [documentação e plano de testes](docs/contact-list-api.md)
  - [Dummyjson](https://dummyjson.com/docs)
  - [Gorest](https://gorest.co.in/)
  - [Toolshop API](https://api.practicesoftwaretesting.com/api/documentation)
