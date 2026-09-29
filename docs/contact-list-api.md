@@ -181,3 +181,33 @@ Sem token, com token inválido ou com token de uma sessão encerrada por logout,
 | Sessão | Login após excluir a conta | 401 | RN16 |
 
 **Total: 34 testes.** Os `401` de login e o `404` de contato inexistente voltam com o corpo vazio, então nesses casos os testes validam só o status.
+
+## Suíte da conta do dashboard
+
+Arquivo separado: [`test/contact_list_dashboard.spec.ts`](../test/contact_list_dashboard.spec.ts). Ele usa uma **conta real**, então os contatos criados aparecem em https://thinking-tester-contact-list.herokuapp.com/contactList.
+
+- **Só cria e consulta.** Não exclui contato nem conta, não edita dados e não faz logout.
+- **Tem config e relatório próprios:** [`jest.dashboard.config.js`](../jest.dashboard.config.js) gera `output/contact-list-dashboard.html`.
+- **Fica fora do `npm test`,** porque o `jest.config.js` ignora esse arquivo. A suíte principal não é afetada.
+- **Credenciais:** `CONTACT_EMAIL` e `CONTACT_PASSWORD`, no `.env` (local) ou nos secrets do repositório (CI). Sem elas, os testes são pulados.
+
+```bash
+npm run test:dashboard
+```
+
+| Grupo | Caso | Esperado |
+|---|---|---|
+| POST | Contato com todos os campos | 201; fica salvo na conta |
+| POST | Contato só com nome e sobrenome | 201; fica salvo na conta |
+| POST | Sem campos obrigatórios | 400 (nada é criado) |
+| POST | E-mail, telefone, data ou CEP inválido (4 casos) | 400 (nada é criado) |
+| POST | Sem token | 401 |
+| GET | Contato completo por id | 200 com os mesmos dados enviados |
+| GET | Contato mínimo por id | 200, sem campos opcionais |
+| GET | Lista de contatos | 200, inclui os dois criados |
+| GET | Id inválido | 400 |
+| GET | Id inexistente | 404 |
+| GET | Sem token | 401 |
+| GET | Perfil da conta | 200, sem campo `password` |
+
+Cada execução adiciona **2 contatos** à conta: um completo (`street2` = "Teste automatizado") e um mínimo (sobrenome "Teste automatizado").

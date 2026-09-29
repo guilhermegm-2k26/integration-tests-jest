@@ -2,6 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['**/test/**/*.[jt]s?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', 'contact_list_dashboard'],
   verbose: true,
   testTimeout: 30000,
   reporters: [
